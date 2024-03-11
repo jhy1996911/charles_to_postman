@@ -240,8 +240,9 @@ if __name__ == '__main__':
         }
 
         for CHARLES_NODE in CHARLES_JSON:
-            POSTMAN_JSON['item'].append(
-                convert_charles_to_postman(CHARLES_NODE))
+            result = convert_charles_to_postman(CHARLES_NODE)
+            if result is not None:
+                POSTMAN_JSON['item'].append(result)
 
         OUTPUT_FILE = open(ARGS.output, 'w')
         OUTPUT_FILE.write(json.dumps(POSTMAN_JSON))
