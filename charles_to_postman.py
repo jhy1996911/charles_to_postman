@@ -150,6 +150,9 @@ def convert_charles_to_postman(charles_node):
     method = charles_node['method']
     postman_item['name'] = path
 
+    if method != 'POST' and method != 'GET':
+        return
+
     if charles_node['port']:
         url = '%s://%s:%s%s' % (charles_node['scheme'],
                                 charles_node['host'], charles_node['port'], path)
